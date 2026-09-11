@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-view="home">
+<html lang="en" data-theme="light" data-view="home">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light dark">
 <title>Sales Hiring Hub</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -25,11 +25,17 @@
   --fresh:#00ADED;
   --gold:#FAB040;
   --white:#ffffff;
-  --mist:rgba(255,255,255,.64);
-  --mist-2:rgba(255,255,255,.44);
-  --glass:rgba(255,255,255,.055);
-  --glass-2:rgba(255,255,255,.10);
-  --glass-line:rgba(255,255,255,.11);
+  /* canvas tokens — light is the default, dark overrides below */
+  --canvas:radial-gradient(120% 90% at 50% -10%, #ffffff 0%, #eef1f7 55%, #e7ebf3 100%);
+  --canvas-flat:#eef1f7;
+  --text:#14171d;
+  --mist:rgba(20,23,29,.62);
+  --mist-2:rgba(20,23,29,.42);
+  --glass:#ffffff;
+  --glass-2:#eaeef6;
+  --glass-line:#dfe4ee;
+  --card-shadow:0 10px 30px rgba(16,24,48,.10);
+  --card-line:1px solid #e4e8f0;
   --font:'Poppins',Arial,Helvetica,sans-serif;
   --pad:clamp(18px,4vw,44px);
 
@@ -47,13 +53,26 @@
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;}
 html{-webkit-text-size-adjust:100%;}
+html[data-theme="dark"]{
+  --canvas:radial-gradient(120% 90% at 50% -10%, #0a2a63 0%, #04122c 55%, #030d20 100%);
+  --canvas-flat:#030d20;
+  --text:#ffffff;
+  --mist:rgba(255,255,255,.64);
+  --mist-2:rgba(255,255,255,.44);
+  --glass:rgba(255,255,255,.055);
+  --glass-2:rgba(255,255,255,.10);
+  --glass-line:rgba(255,255,255,.11);
+  --card-shadow:0 16px 40px rgba(2,10,28,.42);
+  --card-line:1px solid transparent;
+}
+
 body{
   min-height:100vh;
   font-family:var(--font);
-  color:var(--white);
+  color:var(--text);
   font-size:16.5px;line-height:1.6;
-  background:radial-gradient(120% 90% at 50% -10%, var(--sea) 0%, var(--navy) 55%, var(--navy-deep) 100%) no-repeat fixed;
-  background-color:var(--navy-deep);
+  background:var(--canvas) no-repeat fixed;
+  background-color:var(--canvas-flat);
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
 }
 a{color:inherit;text-decoration:none;}
@@ -69,15 +88,25 @@ button,input,textarea,select{font-family:inherit;}
 }
 .brand{display:inline-flex;align-items:center;gap:10px;flex:0 0 auto;}
 .brand img{width:26px;height:26px;display:block;}
-.brand span{font-size:16px;font-weight:600;letter-spacing:.16em;line-height:1;color:#fff;margin-top:1px;}
+.brand span{font-size:16px;font-weight:600;letter-spacing:.16em;line-height:1;color:var(--text);margin-top:1px;}
+.brand .dk{display:none;}
+html[data-theme="dark"] .brand .lt{display:none;}
+html[data-theme="dark"] .brand .dk{display:block;}
+.themebtn{
+  flex:0 0 36px;width:36px;height:36px;margin-left:6px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--glass-line);background:var(--glass);color:var(--mist);
+  display:inline-flex;align-items:center;justify-content:center;transition:color .15s ease,border-color .15s ease;
+}
+.themebtn:hover{color:var(--text);}
+.themebtn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 .topnav{margin-left:auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end;}
 .topnav a{
   font-size:11.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;
   color:var(--mist);padding:9px 12px;border-radius:999px;white-space:nowrap;
   transition:color .15s ease,background .15s ease;
 }
-.topnav a:hover{color:#fff;}
-.topnav a.on{color:#fff;background:var(--glass-2);}
+.topnav a:hover{color:var(--text);}
+.topnav a.on{color:var(--text);background:var(--glass-2);}
 .topnav .short{display:none;}
 @media (max-width:640px){
   .top{gap:12px;padding-top:16px;}
@@ -137,8 +166,8 @@ button,input,textarea,select{font-family:inherit;}
    ========================================================================== */
 .pdfgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
 .pdfcard{
-  background:#fff;color:#14171d;border-radius:26px;
-  padding:30px 30px 24px;box-shadow:0 16px 40px rgba(2,10,28,.42);
+  background:#fff;color:#14171d;border:var(--card-line);border-radius:26px;
+  padding:30px 30px 24px;box-shadow:var(--card-shadow);
 }
 .pdfcard h2{
   margin:0 0 16px;padding:0 0 18px;border-bottom:1px solid #e6e9ef;
@@ -174,21 +203,21 @@ button,input,textarea,select{font-family:inherit;}
 
 .howto{
   list-style:none;margin:0 0 30px;padding:18px 22px;display:flex;flex-direction:column;gap:10px;
-  background:var(--glass);border:1px solid var(--glass-line);border-radius:18px;
+  background:var(--glass);border:1px solid var(--glass-line);border-radius:18px;box-shadow:var(--card-shadow);
 }
-.howto li{display:flex;align-items:center;gap:13px;font-size:15.5px;line-height:1.45;color:#fff;flex-wrap:wrap;}
+.howto li{display:flex;align-items:center;gap:13px;font-size:15.5px;line-height:1.45;color:var(--text);flex-wrap:wrap;}
 .howto li > span:nth-child(2){flex:1 1 260px;min-width:0;}
 .howto .hn{
   flex:0 0 28px;width:28px;height:28px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,#E34554 0%,#F05A28 52%,#FAB040 100%);font-size:13px;font-weight:600;
 }
-.howto q{font-weight:600;color:#fff;}
+.howto q{font-weight:600;color:var(--text);}
 .howto q::before{content:"\201C";} .howto q::after{content:"\201D";}
 .howto .copy{
-  margin-left:auto;border:1px solid rgba(255,255,255,.24);background:transparent;color:#fff;border-radius:999px;
+  margin-left:auto;border:1px solid var(--glass-line);background:transparent;color:var(--text);border-radius:999px;
   padding:7px 16px;font:500 13px var(--font);cursor:pointer;transition:border-color .15s ease,background .15s ease;
 }
-.howto .copy:hover{border-color:rgba(255,255,255,.55);background:var(--glass);}
+.howto .copy:hover{border-color:var(--mist-2);background:var(--glass-2);}
 @media (max-width:640px){ .howto{padding:16px;} .howto .copy{margin-left:41px;} }
 
 /* ==========================================================================
@@ -199,7 +228,7 @@ button,input,textarea,select{font-family:inherit;}
 @media (max-width:760px){ .stack{grid-template-columns:1fr;} }
 .cover{
   display:block;position:relative;border-radius:14px;overflow:hidden;background:var(--sea);
-  box-shadow:0 12px 34px rgba(2,10,28,.5);transition:transform .22s ease,box-shadow .22s ease;
+  box-shadow:var(--card-shadow);transition:transform .22s ease,box-shadow .22s ease;
 }
 .cover img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;}
 .cover .bar{position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(255,255,255,.14);}
@@ -219,15 +248,15 @@ button,input,textarea,select{font-family:inherit;}
 .act:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.4);}
 .act:disabled{cursor:default;opacity:.34;box-shadow:none;}
 .act svg{flex:none;}
-.act.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.24);box-shadow:none;}
-.act.ghost:hover:not(:disabled){border-color:rgba(255,255,255,.5);}
+.act.ghost{background:transparent;color:var(--text);border:1px solid var(--glass-line);box-shadow:none;}
+.act.ghost:hover:not(:disabled){border-color:var(--mist-2);}
 .hint{margin:12px 0 0;text-align:center;font-size:13px;color:var(--mist);min-height:1em;}
 
 .backlink{
   display:inline-flex;align-items:center;gap:9px;margin:0 0 18px;
   font-size:11.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);
 }
-.backlink:hover{color:#fff;}
+.backlink:hover{color:var(--text);}
 .backlink .arrow{transition:transform .18s ease;}
 .backlink:hover .arrow{transform:translateX(-4px);color:var(--tone,var(--gold));}
 
@@ -235,7 +264,7 @@ button,input,textarea,select{font-family:inherit;}
 .shead .eyebrow{margin:0 0 8px;font-size:11.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--tone,var(--gold));}
 .shead h1{margin:0;font-size:clamp(22px,2.8vw,32px);font-weight:600;letter-spacing:-.015em;line-height:1.2;}
 
-.stage{width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000;box-shadow:0 22px 60px rgba(2,10,28,.55);}
+.stage{width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000;box-shadow:var(--card-shadow);}
 .stage iframe{display:block;width:100%;height:100%;border:0;}
 .facade{position:relative;display:block;width:100%;height:100%;}
 .facade img{display:block;width:100%;height:100%;object-fit:cover;}
@@ -248,15 +277,15 @@ button,input,textarea,select{font-family:inherit;}
 
 .pager{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:clamp(30px,4vw,44px);}
 .pager a{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);}
-.pager a:hover{color:#fff;}
+.pager a:hover{color:var(--text);}
 .pager a[hidden]{display:none;}
 .pager .spacer{flex:1;}
 
 /* ---------- workbook sheet ---------- */
 .sheet{
-  background:#fff;color:#1c1c1c;border-radius:14px;
+  background:#fff;color:#1c1c1c;border:var(--card-line);border-radius:14px;
   padding:clamp(26px,4vw,46px) clamp(22px,4vw,50px) clamp(30px,4vw,48px);
-  box-shadow:0 16px 40px rgba(2,10,28,.42);
+  box-shadow:var(--card-shadow);
 }
 .sheet .tag{margin:0 0 18px;font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--tone-deep,#0045C2);}
 .sheet .quote{margin:0;font-size:clamp(15.5px,1.9vw,18.5px);font-style:italic;font-weight:600;line-height:1.45;color:#14181f;}
@@ -365,14 +394,16 @@ button,input,textarea,select{font-family:inherit;}
 
 <header class="top">
   <a class="brand" href="#" aria-label="Sales Hiring Hub home">
-    <img src="Assets/Lushin Logo Icons/Lushin Logo Icon - Arctic White.svg" alt="">
+    <img class="lt" src="Assets/Lushin Logo Icons/Lushin Logo Blue.svg" alt="">
+    <img class="dk" src="Assets/Lushin Logo Icons/Lushin Logo Icon - Arctic White.svg" alt="">
     <span>LUSHIN</span>
   </a>
   <nav class="topnav" id="topnav">
     <a href="#" data-nav="home">Home</a>
     <a href="#training" data-nav="training"><span class="long">Watch These</span><span class="short">Watch</span></a>
     <a href="#course" data-nav="course"><span class="long">Hiring Toolkit</span><span class="short">Toolkit</span></a>
-    <a href="https://lushin-inc.github.io/interview-guide/" target="_blank" rel="noopener"><span class="long">Hiring Guide</span><span class="short">Guide</span></a>
+    <a href="https://lushin-inc.github.io/interview-guide/" target="_blank" rel="noopener"><span class="long">Interview Guide</span><span class="short">Guide</span></a>
+    <button class="themebtn" id="theme" type="button" title="Light / dark" aria-label="Switch between light and dark"></button>
   </nav>
 </header>
 
@@ -682,7 +713,7 @@ function viewHome(){
         </a>
         <a class="chooser" href="${GUIDE_URL}" target="_blank" rel="noopener" style="background:${GUIDE_GRAD};box-shadow:${GUIDE_GLOW}">
           <span class="ic">${ICON.guide}</span>
-          <span class="nm">Hiring Guide</span>
+          <span class="nm">Interview Guide</span>
         </a>
       </div>
     </section>`;
@@ -1190,6 +1221,20 @@ document.addEventListener("input", e => {
   }
   refreshSession();
 });
+
+
+/* ==========================================================================
+   THEME — light by default, remembered per device
+   ========================================================================== */
+const SUN  = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>';
+const MOON = '<svg viewBox="0 0 24 24"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg>';
+function applyTheme(t){
+  root.setAttribute("data-theme", t);
+  $("theme").innerHTML = t === "dark" ? SUN : MOON;
+  try{ localStorage.setItem("hiringhub.theme", t); }catch(e){}
+}
+applyTheme((function(){ try{ return localStorage.getItem("hiringhub.theme") === "dark" ? "dark" : "light"; }catch(e){ return "light"; } })());
+$("theme").onclick = () => applyTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
 
 /* ==========================================================================
    ROUTER — #training, #training/<session>, #course
