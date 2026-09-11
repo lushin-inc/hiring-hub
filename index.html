@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en" data-view="home">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Sales Hiring Hub</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="Assets/OS Icons/Light Blue Lushin.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   LUSHIN PALETTE
+   stable #21245C · fresh #00ADED · energetic #0045C2
+   passionate #E34554 · fireball #F05A28 · limitless #FAB040
+   ========================================================================== */
+:root{
+  --navy:#04122c;
+  --navy-deep:#030d20;
+  --sea:#0a2a63;
+  --stable:#21245C;
+  --fresh:#00ADED;
+  --gold:#FAB040;
+  --white:#ffffff;
+  --mist:rgba(255,255,255,.64);
+  --mist-2:rgba(255,255,255,.44);
+  --glass:rgba(255,255,255,.055);
+  --glass-2:rgba(255,255,255,.10);
+  --glass-line:rgba(255,255,255,.11);
+  --font:'Poppins',Arial,Helvetica,sans-serif;
+  --pad:clamp(18px,4vw,44px);
+
+  /* tokens used inside white "paper" surfaces */
+  --ink:#14171d;
+  --ink-2:#4e5665;
+  --ink-3:#8b93a2;
+  --line:#e5e8ef;
+  --line-soft:#eef0f5;
+  --hover:#f1f3f7;
+  --field:#ffffff;
+  --surface-2:#f7f9fc;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  min-height:100vh;
+  font-family:var(--font);
+  color:var(--white);
+  font-size:16.5px;line-height:1.6;
+  background:radial-gradient(120% 90% at 50% -10%, var(--sea) 0%, var(--navy) 55%, var(--navy-deep) 100%) no-repeat fixed;
+  background-color:var(--navy-deep);
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+}
+a{color:inherit;text-decoration:none;}
+button,input,textarea,select{font-family:inherit;}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.top{
+  max-width:1240px;margin:0 auto;padding:22px var(--pad) 18px;
+  display:flex;align-items:center;gap:24px;
+}
+.brand{display:inline-flex;align-items:center;gap:10px;flex:0 0 auto;}
+.brand img{width:26px;height:26px;display:block;}
+.brand span{font-size:16px;font-weight:600;letter-spacing:.16em;line-height:1;color:#fff;margin-top:1px;}
+.topnav{margin-left:auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end;}
+.topnav a{
+  font-size:11.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--mist);padding:9px 12px;border-radius:999px;white-space:nowrap;
+  transition:color .15s ease,background .15s ease;
+}
+.topnav a:hover{color:#fff;}
+.topnav a.on{color:#fff;background:var(--glass-2);}
+.topnav .short{display:none;}
+@media (max-width:640px){
+  .top{gap:12px;padding-top:16px;}
+  .brand span{display:none;}
+  .topnav{gap:2px;}
+  .topnav a{padding:8px 7px;font-size:10.5px;letter-spacing:.08em;}
+  .topnav .long{display:none;}
+  .topnav .short{display:inline;}
+}
+
+.wrap{max-width:1240px;margin:0 auto;padding:6px var(--pad) 90px;}
+#view{animation:rise .26s ease backwards;}
+@keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+
+/* ==========================================================================
+   HOME — two choosers
+   ========================================================================== */
+.home{min-height:calc(100vh - 190px);display:flex;flex-direction:column;justify-content:center;}
+.hub-title{font-size:21px;font-weight:500;letter-spacing:-.01em;color:var(--mist);margin:0 0 20px;}
+.choosers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.chooser{
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:space-between;
+  height:clamp(320px,58vh,460px);border-radius:28px;padding:36px 36px 32px;color:#fff;
+  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+}
+.chooser:hover{transform:translateY(-5px);filter:brightness(1.04);}
+.chooser .ic{
+  width:60px;height:60px;border-radius:18px;background:rgba(255,255,255,.18);
+  display:grid;place-items:center;
+}
+.chooser .ic svg{width:30px;height:30px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.chooser .nm{display:block;font-size:clamp(28px,3vw,42px);font-weight:600;letter-spacing:-.028em;line-height:1.06;margin:0;}
+.chooser .sub{display:block;font-size:clamp(16px,1.6vw,20px);font-weight:300;opacity:.9;margin-top:8px;}
+@media (max-width:900px){ .choosers{grid-template-columns:1fr;gap:16px;} .chooser{height:230px;padding:26px;border-radius:22px;} }
+.chooser .bar{height:5px;border-radius:3px;background:rgba(255,255,255,.26);margin-top:24px;overflow:hidden;}
+.chooser .bar i{display:block;height:100%;background:#fff;border-radius:3px;transition:width .4s ease;}
+@media (max-width:760px){
+  .home{min-height:0;padding-top:12px;}
+  .choosers{grid-template-columns:1fr;gap:16px;}
+  .chooser{height:230px;padding:26px;border-radius:22px;}
+  .chooser .ic{width:50px;height:50px;border-radius:15px;}
+  .chooser .ic svg{width:26px;height:26px;}
+}
+
+/* ==========================================================================
+   SECTION BANNERS
+   ========================================================================== */
+.sbanner{border-radius:24px;padding:32px 34px;margin:0 0 28px;color:#fff;}
+.sbanner .eyebrow{font-size:15px;font-weight:200;opacity:.88;margin:0 0 4px;}
+.sbanner .subline{font-size:16px;font-weight:300;opacity:.9;margin:6px 0 0;}
+.sbanner h1{font-size:clamp(28px,3.6vw,38px);font-weight:600;letter-spacing:-.024em;line-height:1.1;margin:0;}
+@media (max-width:640px){ .sbanner{padding:24px 22px;border-radius:18px;} }
+
+/* ==========================================================================
+   MINI-COURSE — PDF cards
+   ========================================================================== */
+.pdfgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+.pdfcard{
+  background:#fff;color:#14171d;border-radius:26px;
+  padding:30px 30px 24px;box-shadow:0 16px 40px rgba(2,10,28,.42);
+}
+.pdfcard h2{
+  margin:0 0 16px;padding:0 0 18px;border-bottom:1px solid #e6e9ef;
+  font-size:22px;font-weight:600;letter-spacing:-.015em;line-height:1.2;color:#14171d;
+}
+.pdfcard ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;}
+.pdfrow{
+  display:flex;align-items:center;gap:16px;padding:9px 10px;margin:0 -10px;border-radius:12px;
+  color:#3c4452;font-size:16.5px;line-height:1.35;transition:background .14s ease,color .14s ease;
+}
+.pdfrow:hover{background:#f2f5fa;color:#21245C;}
+.pdfrow .pi{
+  flex:0 0 32px;width:32px;height:32px;border-radius:8px;
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.pdfrow .pi img{width:22px;height:22px;display:block;}
+.pdfrow .pn{flex:1;min-width:0;}
+.pdfrow .pd{flex:0 0 18px;width:18px;height:18px;color:#8b93a2;opacity:0;transition:opacity .14s ease;}
+.pdfrow:hover .pd{opacity:1;}
+.pdfrow.busy .pd{opacity:1;animation:pulse 1s ease infinite;}
+@keyframes pulse{50%{opacity:.25;}}
+
+.act.course{background:linear-gradient(135deg,#E34554 0%,#F05A28 52%,#FAB040 100%);color:#fff;}
+
+@media (max-width:1100px){ .pdfgrid{grid-template-columns:repeat(2,1fr);gap:20px;} }
+@media (max-width:700px){
+  .pdfgrid{grid-template-columns:1fr;gap:16px;}
+  .pdfcard{border-radius:20px;padding:24px 22px 18px;}
+  .pdfcard h2{font-size:20px;}
+  .pdfrow{font-size:16px;}
+  .pdfrow .pd{opacity:1;}
+}
+
+.howto{
+  list-style:none;margin:0 0 30px;padding:18px 22px;display:flex;flex-direction:column;gap:10px;
+  background:var(--glass);border:1px solid var(--glass-line);border-radius:18px;
+}
+.howto li{display:flex;align-items:center;gap:13px;font-size:15.5px;line-height:1.45;color:#fff;flex-wrap:wrap;}
+.howto li > span:nth-child(2){flex:1 1 260px;min-width:0;}
+.howto .hn{
+  flex:0 0 28px;width:28px;height:28px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#E34554 0%,#F05A28 52%,#FAB040 100%);font-size:13px;font-weight:600;
+}
+.howto q{font-weight:600;color:#fff;}
+.howto q::before{content:"\201C";} .howto q::after{content:"\201D";}
+.howto .copy{
+  margin-left:auto;border:1px solid rgba(255,255,255,.24);background:transparent;color:#fff;border-radius:999px;
+  padding:7px 16px;font:500 13px var(--font);cursor:pointer;transition:border-color .15s ease,background .15s ease;
+}
+.howto .copy:hover{border-color:rgba(255,255,255,.55);background:var(--glass);}
+@media (max-width:640px){ .howto{padding:16px;} .howto .copy{margin-left:41px;} }
+
+/* ==========================================================================
+   TRAINING SESSIONS — cover stack, video, workbook sheets
+   ========================================================================== */
+.narrow{max-width:900px;margin:0 auto;}
+.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,24px);}
+@media (max-width:760px){ .stack{grid-template-columns:1fr;} }
+.cover{
+  display:block;position:relative;border-radius:14px;overflow:hidden;background:var(--sea);
+  box-shadow:0 12px 34px rgba(2,10,28,.5);transition:transform .22s ease,box-shadow .22s ease;
+}
+.cover img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;}
+.cover .bar{position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(255,255,255,.14);}
+.cover .bar i{display:block;height:100%;width:0;background:var(--tone,var(--gold));transition:width .4s ease;}
+.cover:hover{transform:translateY(-4px);box-shadow:0 20px 46px rgba(15,71,161,.5);}
+
+.allbox{margin:clamp(26px,4vw,40px) 0 0;}
+.allbox.center{max-width:620px;margin-left:auto;margin-right:auto;}
+.act{
+  display:flex;align-items:center;justify-content:center;gap:12px;width:100%;
+  padding:22px 28px;border:0;border-radius:999px;
+  background:var(--tone,var(--gold));color:var(--tone-on,#08182f);
+  font:600 14.5px var(--font);letter-spacing:.03em;cursor:pointer;text-align:center;
+  box-shadow:0 10px 26px rgba(0,0,0,.32);
+  transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease;
+}
+.act:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.4);}
+.act:disabled{cursor:default;opacity:.34;box-shadow:none;}
+.act svg{flex:none;}
+.act.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.24);box-shadow:none;}
+.act.ghost:hover:not(:disabled){border-color:rgba(255,255,255,.5);}
+.hint{margin:12px 0 0;text-align:center;font-size:13px;color:var(--mist);min-height:1em;}
+
+.backlink{
+  display:inline-flex;align-items:center;gap:9px;margin:0 0 18px;
+  font-size:11.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);
+}
+.backlink:hover{color:#fff;}
+.backlink .arrow{transition:transform .18s ease;}
+.backlink:hover .arrow{transform:translateX(-4px);color:var(--tone,var(--gold));}
+
+.shead{margin:0 0 clamp(18px,2.4vh,26px);}
+.shead .eyebrow{margin:0 0 8px;font-size:11.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--tone,var(--gold));}
+.shead h1{margin:0;font-size:clamp(22px,2.8vw,32px);font-weight:600;letter-spacing:-.015em;line-height:1.2;}
+
+.stage{width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000;box-shadow:0 22px 60px rgba(2,10,28,.55);}
+.stage iframe{display:block;width:100%;height:100%;border:0;}
+.facade{position:relative;display:block;width:100%;height:100%;}
+.facade img{display:block;width:100%;height:100%;object-fit:cover;}
+.facade .play{position:absolute;right:clamp(16px,3vw,30px);bottom:clamp(16px,3vw,30px);width:clamp(54px,7vw,76px);height:clamp(54px,7vw,76px);border-radius:50%;
+  background:rgba(255,255,255,.95);display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.35);transition:transform .15s ease;}
+.facade .play svg{width:30px;height:30px;fill:#04122c;margin-left:4px;}
+.facade:hover .play{transform:scale(1.07);}
+
+.sheets{margin-top:clamp(34px,5vw,56px);display:flex;flex-direction:column;gap:clamp(20px,3vw,30px);}
+
+.pager{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:clamp(30px,4vw,44px);}
+.pager a{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);}
+.pager a:hover{color:#fff;}
+.pager a[hidden]{display:none;}
+.pager .spacer{flex:1;}
+
+/* ---------- workbook sheet ---------- */
+.sheet{
+  background:#fff;color:#1c1c1c;border-radius:14px;
+  padding:clamp(26px,4vw,46px) clamp(22px,4vw,50px) clamp(30px,4vw,48px);
+  box-shadow:0 16px 40px rgba(2,10,28,.42);
+}
+.sheet .tag{margin:0 0 18px;font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--tone-deep,#0045C2);}
+.sheet .quote{margin:0;font-size:clamp(15.5px,1.9vw,18.5px);font-style:italic;font-weight:600;line-height:1.45;color:#14181f;}
+.sheet .blocks{margin-top:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:clamp(26px,3vw,36px);}
+.blk h3{margin:0 0 14px;font-size:clamp(16px,2vw,18.5px);font-weight:600;color:var(--stable);line-height:1.35;}
+
+.lines{display:flex;flex-direction:column;gap:10px;}
+.line{display:flex;align-items:baseline;gap:12px;}
+.line > span{flex:none;width:26px;font-size:15px;color:#7a8593;font-variant-numeric:tabular-nums;}
+.line.lab > span{width:120px;font-weight:600;color:var(--stable);font-size:14.5px;}
+
+.sheet input.f,.sheet textarea.f{width:100%;font:400 15.5px var(--font);color:#1c1c1c;background:transparent;border:0;outline:none;}
+.sheet input.f{border-bottom:1.5px solid #c9d4e4;padding:7px 4px;transition:border-color .16s ease;}
+.sheet input.f:focus{border-bottom-color:var(--tone-deep,#0045C2);}
+.sheet input.f::placeholder,.sheet textarea.f::placeholder{color:#aab4c2;}
+.sheet textarea.f{
+  resize:none;overflow:hidden;background:#f2f5fa;border:1px solid #dfe6f0;border-radius:9px;
+  padding:13px 15px;line-height:1.6;transition:border-color .16s ease;display:block;
+}
+.sheet textarea.f:focus{border-color:var(--tone-deep,#0045C2);}
+
+.callout{border-radius:8px;padding:6px;background:var(--tone,#FAB040);}
+.callout h4{margin:6px 8px 10px;text-align:center;font-size:15px;font-weight:600;color:var(--tone-on,#14181f);line-height:1.4;}
+.callout .inner{background:#fff;border-radius:5px;padding:8px 10px;}
+.sheet .callout textarea.f{background:transparent;border:0;padding:4px;}
+
+.inline-q{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.inline-q h3{margin:0;}
+.sheet .inline-q input.f{width:auto;flex:1 1 220px;min-width:180px;}
+
+/* flow: numbered steps with arrows */
+.flow{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:26px;}
+.fstep{position:relative;background:#f2f5fa;border:1px solid #dfe6f0;border-radius:12px;padding:14px 14px 12px;}
+.fstep .fn{
+  display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;
+  background:linear-gradient(135deg,var(--stable),#0045C2);color:#fff;font-size:14px;font-weight:600;margin-bottom:8px;
+}
+.sheet .fstep textarea.f{background:#fff;padding:9px 11px;font-size:14.5px;}
+.fstep + .fstep::before{
+  content:"";position:absolute;left:-19px;top:50%;width:11px;height:11px;
+  border-top:2.5px solid var(--tone-deep,#0045C2);border-right:2.5px solid var(--tone-deep,#0045C2);
+  transform:translateY(-50%) rotate(45deg);
+}
+
+/* split: side-by-side prompts */
+.split2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.split2 h4{margin:0 0 8px;font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--tone-deep,#0045C2);}
+
+/* trio: rows of three */
+.trio{display:grid;gap:10px;}
+.trow{display:grid;grid-template-columns:26px repeat(3,1fr);gap:10px;align-items:start;}
+.trow.head span{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--tone-deep,#0045C2);}
+.trow .tn{font-size:15px;color:#7a8593;padding-top:12px;}
+.sheet .trow textarea.f{padding:10px 12px;font-size:14.5px;}
+
+/* stairs: rising levels */
+.stairs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:end;}
+.stair{
+  border-radius:12px 12px 4px 4px;padding:10px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;
+  min-height:calc(96px + var(--lv) * 46px);
+}
+.stair .sn{color:#fff;font-size:28px;font-weight:600;line-height:1;padding:0 4px 4px;}
+.sheet .stair textarea.f{background:#fff;border:0;padding:10px 12px;font-size:14.5px;}
+
+/* hub diagram */
+.hubfig svg{display:block;width:100%;height:auto;max-width:760px;margin:0 auto 18px;}
+
+@media (max-width:680px){
+  .flow{grid-auto-flow:row;gap:22px;}
+  .fstep + .fstep::before{left:50%;top:-16px;transform:translateX(-50%) rotate(135deg);}
+  .split2{grid-template-columns:1fr;}
+  .trow.head{display:none;}
+  .trow{grid-template-columns:22px 1fr;}
+  .trow textarea.f:nth-of-type(n+2){grid-column:2;}
+  .stairs{grid-template-columns:1fr;}
+  .stair{min-height:0;border-radius:12px;flex-direction:row-reverse;align-items:center;width:calc(58% + var(--lv) * 10.5%);}
+  .stair .sn{font-size:22px;padding:0 6px;}
+}
+
+/* ---------- print sheets (PDF only) ---------- */
+#printroot{position:fixed;left:-20000px;top:0;width:816px;background:#fff;}
+.psheet{width:816px;background:#fff;color:#1c1c1c;padding:56px 64px 60px;font-family:var(--font);}
+.psheet .pmark{display:flex;align-items:center;gap:9px;margin-bottom:30px;}
+.psheet .pmark img{width:24px;height:24px;}
+.psheet .pmark span{font-size:15px;font-weight:600;letter-spacing:.16em;color:#21245C;}
+.psheet .pq{margin:0;font:italic 600 17px var(--font);line-height:1.45;}
+.psheet h3{margin:30px 0 12px;font-size:17px;font-weight:600;color:#21245C;}
+.psheet .pline{display:flex;gap:10px;align-items:baseline;margin:0 0 12px;}
+.psheet .pline b{flex:none;width:24px;font-weight:400;color:#7a8593;font-size:14px;}
+.psheet .pline b.wide{width:auto;min-width:70px;font-weight:600;color:#21245C;}
+.psheet .pline u{flex:1;text-decoration:none;border-bottom:1.5px solid #c9d4e4;padding-bottom:4px;font-size:14px;min-height:22px;display:block;}
+.psheet .ptext{border:1px solid #dfe6f0;background:#f7f9fc;border-radius:6px;padding:12px 14px;font-size:14px;line-height:1.6;white-space:pre-wrap;min-height:54px;}
+.psheet .pfoot{margin-top:34px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#9aa2ab;}
+.psheet .pcall{border-radius:6px;padding:6px;margin-top:26px;}
+.psheet .pcall h4{margin:4px 6px 8px;text-align:center;font-size:14px;}
+.psheet .pcall .pin{background:#fff;border-radius:3px;padding:10px 12px;font-size:14px;line-height:1.6;white-space:pre-wrap;min-height:54px;}
+.psheet .pgrid{display:flex;gap:14px;}
+.psheet .pgrid > div{flex:1;}
+.psheet .pgrid h5{margin:0 0 6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#21245C;}
+.psheet .pfig svg{width:100%;height:auto;display:block;}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#" aria-label="Sales Hiring Hub home">
+    <img src="Assets/Lushin Logo Icons/Lushin Logo Icon - Arctic White.svg" alt="">
+    <span>LUSHIN</span>
+  </a>
+  <nav class="topnav" id="topnav">
+    <a href="#" data-nav="home">Home</a>
+    <a href="#training" data-nav="training"><span class="long">Watch These</span><span class="short">Watch</span></a>
+    <a href="#course" data-nav="course"><span class="long">Hiring Toolkit</span><span class="short">Toolkit</span></a>
+    <a href="https://lushin-inc.github.io/interview-guide/" target="_blank" rel="noopener"><span class="long">Hiring Guide</span><span class="short">Guide</span></a>
+  </nav>
+</header>
+
+<div class="wrap"><main id="view"></main></div>
+<div id="printroot" aria-hidden="true"></div>
+
+<script>
+/* ==========================================================================
+   SALES HIRING HUB
+
+   TO EDIT CONTENT
+   Training session videos : SESSIONS below — {key, title, video (YouTube id), cover, tone}.
+   Workbook pages          : PAGES below — one object per page, s = session key.
+   Mini-course manuals     : MANUALS further down. The PDFs load from the STAR
+                             course site (lushin-inc.github.io/star).
+
+   WORKBOOK BLOCK TYPES
+     {t:"num",     k, label, n}             numbered blank lines
+     {t:"lines",   k, label, items:[...]}   blank lines with a word in front
+     {t:"prompt",  k, label, rows}          open text box
+     {t:"callout", k, label}                boxed prompt in the session colour
+     {t:"inline",  k, label}                label with one line beside it
+     {t:"flow",    k, label, n}             numbered steps with arrows
+     {t:"split",   k, cols:["A","B"]}       two boxes side by side
+     {t:"trio",    k, label, cols:[3], n}   rows of three boxes
+     {t:"stairs",  k, label, n}             rising levels
+     {t:"hub",     k, label, center, n}     centre circle with spokes
+   ========================================================================== */
+
+const TONES = {
+  fresh: { c:"#00ADED", deep:"#0079a8", on:"#04122c" },
+  gold:  { c:"#FAB040", deep:"#B07407", on:"#1a1405" },
+  red:   { c:"#E34554", deep:"#C22F3E", on:"#ffffff" }
+};
+
+const SESSIONS = [
+  { key:"role",       title:"Role Identification, Assessments & Interviewing", video:"aJ18a9VoIlE", cover:"Assets/training/role.jpg",       tone:"fresh" },
+  { key:"clinic",     title:"Interviewing Clinic",                               video:"192qSyr-1c8", cover:"Assets/training/clinic.jpg",     tone:"gold"  },
+  { key:"onboarding", title:"Orientation vs Onboarding",                         video:"dO_hl4YLUBw", cover:"Assets/training/onboarding.jpg", tone:"red"   }
+];
+
+const PAGES = [
+  /* ---------------- Session 1 — Role Identification, Assessments & Interviewing ---------------- */
+  { id:"p1", s:"role", topic:"Why New Hires Fail",
+    quote:"People were either dead when you hired them or you killed them.",
+    blocks:[
+      { t:"num", k:"why",  label:"Two reasons a new hire doesn't work out:", n:2 },
+      { t:"num", k:"cost", label:"What goes into the cost of a bad hire:", n:3 },
+      { t:"callout", k:"mine", label:"My last hire that didn't work out — which reason was it?" }
+    ]},
+  { id:"p2", s:"role", topic:"The Recruiting Process",
+    quote:"Your recruiting process has to mimic what the person will actually do in the job.",
+    blocks:[
+      { t:"flow", k:"order", label:"The ideal order:", n:4 },
+      { t:"inline", k:"pressure", label:"The first interview should carry as much pressure as:" },
+      { t:"prompt", k:"ours", label:"Where our process is out of order today:", rows:3 }
+    ]},
+  { id:"p3", s:"role", topic:"Writing the Ad",
+    quote:"Think of your ad like a sales call. It's your first gate of disqualification.",
+    blocks:[
+      { t:"inline", k:"goal", label:"Write the ad to:" },
+      { t:"num", k:"parts", label:"The three parts of an ad:", n:3 },
+      { t:"prompt", k:"person", label:"The person we're hiring — not the position:", rows:4 }
+    ]},
+  { id:"p4", s:"role", topic:"Experience vs. Intangibles",
+    quote:"When there is doubt, there is no doubt.",
+    blocks:[
+      { t:"split", k:"fit", cols:["Ideal candidate", "Minimally acceptable"] },
+      { t:"num", k:"match", label:"Transferable experience matches on:", n:4 },
+      { t:"callout", k:"line", label:"Our experience line, written around the selling situation:" }
+    ]},
+  { id:"p5", s:"role", topic:"Reading the Assessment",
+    quote:"No means no. Yes does not always mean yes.",
+    blocks:[
+      { t:"inline", k:"rate", label:"Recommended plus worth considering usually lands at:" },
+      { t:"lines", k:"never", label:"A candidate who has never sold:", items:["Insist on high", "Expect low"] },
+      { t:"num", k:"filter", label:"The three-word hiring filter:", n:3 },
+      { t:"num", k:"remote", label:"What a remote role demands:", n:4 }
+    ]},
+  { id:"p6", s:"role", topic:"The Phone Interview",
+    quote:"Match them back to the ad. Don't get creative. 30 minutes or less.",
+    blocks:[
+      { t:"num", k:"score", label:"Score them on:", n:2 },
+      { t:"num", k:"ad", label:"Requirements from our ad I'll read back:", n:3 },
+      { t:"callout", k:"blow", label:"The blow-off at the end, in my words:" }
+    ]},
+  { id:"p7", s:"role", topic:"The Interviews",
+    quote:"Every claim needs a challenge.",
+    blocks:[
+      { t:"inline", k:"layers", label:"How many layers deep to dig:" },
+      { t:"prompt", k:"coach", label:"The coachability question that does the real work:", rows:3 },
+      { t:"num", k:"resp", label:"High responsibility sounds like:", n:4 },
+      { t:"callout", k:"reverse", label:"When a candidate tries to reverse me, I'll say:" }
+    ]},
+  { id:"p8", s:"role", topic:"Homework",
+    quote:"What's also as important as a question you ask is knowing what to listen for.",
+    blocks:[
+      { t:"trio", k:"hw", label:"Behaviors I want to validate:", cols:["Behavior", "My question", "What I'm listening for"], n:3 },
+      { t:"num", k:"commit", label:"My two commitments:", n:2 }
+    ]},
+
+  /* ---------------- Session 2 — Interviewing Clinic ---------------- */
+  { id:"p9", s:"clinic", topic:"Screening Candidates",
+    quote:"Never base the decision solely on a resume.",
+    blocks:[
+      { t:"num", k:"bg", label:"Background items we require before scanning a resume:", n:5 },
+      { t:"num", k:"dq", label:"Immediate disqualifiers for our role:", n:3 },
+      { t:"callout", k:"nudge", label:"My day-3 nudge:" }
+    ]},
+  { id:"p10", s:"clinic", topic:"Proving the Sales Training",
+    quote:"Sellers know buzzwords. Sellers know what buzzwords to say.",
+    blocks:[
+      { t:"prompt", k:"open", label:"My opening question about their sales training:", rows:2 },
+      { t:"num", k:"dig", label:"Follow-up questions to dig layer after layer:", n:4 },
+      { t:"prompt", k:"trap", label:"The number one trap leaders fall into:", rows:3 },
+      { t:"inline", k:"inspect", label:"Inspect what you:" }
+    ]},
+  { id:"p11", s:"clinic", topic:"Onboarding and the Job Ad",
+    quote:"The first 90 days are the most important 90 days of an employee life cycle.",
+    blocks:[
+      { t:"inline", k:"basis", label:"Onboarding, like selling, is based on:" },
+      { t:"num", k:"warn", label:"Warning signs they aren't going to make it:", n:6 },
+      { t:"prompt", k:"notfit", label:"Who this position is not a fit for:", rows:3 },
+      { t:"inline", k:"rule", label:"Hire slow," }
+    ]},
+  { id:"p12", s:"clinic", topic:"The First Interview",
+    quote:"That's by design. I just want to see if you can handle some pressure. We're in a pressure world.",
+    blocks:[
+      { t:"callout", k:"ufc", label:"The up-front contract I'll open every interview with:" },
+      { t:"inline", k:"bad", label:"A bad sign when I hand them the start:" },
+      { t:"prompt", k:"matters", label:"The one piece that actually matters for this role:", rows:2 },
+      { t:"prompt", k:"curve", label:"A curveball I'll throw:", rows:2 }
+    ]},
+  { id:"p13", s:"clinic", topic:"Coachability and Red Flags",
+    quote:"If someone's not willing to take advice from a leader to help them, then you're just going to want to do things your way.",
+    blocks:[
+      { t:"num", k:"q", label:"The two coachability questions:", n:2 },
+      { t:"prompt", k:"press", label:"The pressure follow-up:", rows:2 },
+      { t:"num", k:"flags", label:"Red flags in the first two minutes:", n:4 }
+    ]},
+  { id:"p14", s:"clinic", topic:"Matching Them to the Ad",
+    quote:"Let me reread back to you some of the key pieces we're looking for and you can tell me how that's you.",
+    blocks:[
+      { t:"num", k:"lines", label:"Lines from our ad I'll read back:", n:3 },
+      { t:"callout", k:"obj", label:"The hardest objection they'd face in this job:" },
+      { t:"inline", k:"golden", label:"The golden rule of onboarding — everything is a:" },
+      { t:"prompt", k:"ride", label:"What I'll tell the next new hire to look for on a ride-along:", rows:3 }
+    ]},
+  { id:"p15", s:"clinic", topic:"Re-Engaging a Silent Client",
+    quote:"We put too many words in emails. Make it simple and quick and to the point.",
+    blocks:[
+      { t:"flow", k:"emails", label:"The three emails:", n:3 },
+      { t:"num", k:"cut", label:"Phrases to cut:", n:2 },
+      { t:"callout", k:"two", label:"My two-option email:" }
+    ]},
+
+  /* ---------------- Session 3 — Orientation vs Onboarding ---------------- */
+  { id:"p16", s:"onboarding", topic:"Orientation vs. Onboarding",
+    quote:"If I spend more time with you up front, that's less time I have to spend with you in the long run.",
+    blocks:[
+      { t:"split", k:"diff", cols:["Orientation is", "Onboarding is"] },
+      { t:"callout", k:"ramp", label:"To increase ramp-up time for new hires, what are we not doing that we could or should be doing?" }
+    ]},
+  { id:"p17", s:"onboarding", topic:"Judging New Hires",
+    quote:"Top performers must have strong onboarding plans. If not, they think you're just winging it.",
+    blocks:[
+      { t:"num", k:"judge", label:"Three things to judge a new hire on:", n:3 },
+      { t:"inline", k:"clarity", label:"Where there's no clarity, there's no:" },
+      { t:"prompt", k:"code", label:"“He's been successful, we'll just let him do his thing” is code for:", rows:3 }
+    ]},
+  { id:"p18", s:"onboarding", topic:"Milestones and Competency Checks",
+    quote:"We don't know what to train unless we properly coach.",
+    blocks:[
+      { t:"inline", k:"rock", label:"Hiring a rock star changes:" },
+      { t:"num", k:"ways", label:"Ways to run competency checks:", n:4 },
+      { t:"prompt", k:"add", label:"A competency check I'll add to our onboarding:", rows:3 }
+    ]},
+  { id:"p19", s:"onboarding", topic:"Scavenger Hunts and Pitfalls",
+    quote:"If people don't know what to look for, they're not going to find it.",
+    blocks:[
+      { t:"num", k:"ask", label:"Two questions to ask your last hire before onboarding the next:", n:2 },
+      { t:"hub", k:"pit", label:"Common pitfalls of onboarding:", center:"Onboarding", n:5 }
+    ]},
+  { id:"p20", s:"onboarding", topic:"The Four Levels of Onboarding",
+    quote:"I want you to think, not follow a direction.",
+    blocks:[
+      { t:"stairs", k:"lvl", label:"Levels of onboarding:", n:4 },
+      { t:"split", k:"task", cols:["Task completion is", "Behavioral change is"] }
+    ]},
+  { id:"p21", s:"onboarding", topic:"Building the Plan",
+    quote:"The further you get away from the beginning, the less time you think something takes.",
+    blocks:[
+      { t:"prompt", k:"first90", label:"Everything they need to know or do in their first 90 days to be successful:", rows:6 },
+      { t:"num", k:"buckets", label:"Big-picture buckets:", n:9 },
+      { t:"lines", k:"colors", label:"What each colour on the board means:", items:["Green", "Yellow", "Red"] }
+    ]},
+  { id:"p22", s:"onboarding", topic:"Commitments",
+    quote:"We're not in the orientation game, we're in the onboarding game.",
+    blocks:[
+      { t:"num", k:"rules", label:"The five key rules:", n:5 },
+      { t:"inline", k:"need", label:"People are never fighting you. They're fighting:" },
+      { t:"num", k:"steps", label:"My action steps:", n:3 }
+    ]}
+];
+
+/* ==========================================================================
+   HIRING MINI-COURSE — PDFs
+   Each group is one card. Add a PDF: add {name, pdf} to a group's list.
+   Relative paths load from COURSE_BASE (the STAR course site). The name is
+   what shows on the page and what the downloaded file is called.
+   ========================================================================== */
+const COURSE_BASE = "https://lushin-inc.github.io/star/";
+
+const MANUALS = [
+  { name:"Intro", files:[
+      {name:"Introduction",                         pdf:"manuals/01-introduction.pdf"},
+      {name:"Why Salespeople Are Different",        pdf:"manuals/02-salespeople-are-different.pdf"}
+  ]},
+  { name:"Writing The Ad", files:[
+      {name:"Writing the Job Description",          pdf:"manuals/03-the-job-description.pdf"},
+      {name:"Best Place to Work - Why",             pdf:"manuals/04-best-place-to-work.pdf"},
+      {name:"Writing the Ad",                       pdf:"manuals/05-writing-the-ad.pdf"}
+  ]},
+  { name:"Finding Candidates", files:[
+      {name:"How to Source Candidates",             pdf:"manuals/06-sourcing-candidates.pdf"},
+      {name:"How to Select Candidates",             pdf:"manuals/07-effective-selection-methods.pdf"},
+      {name:"Role Configuration",                   pdf:"manuals/08-candidate-role-configuration.pdf"},
+      {name:"Recognize Your Unconscious Bias",      pdf:"manuals/09-unconscious-bias.pdf"}
+  ]},
+  { name:"Assessment", files:[
+      {name:"Recruiting Process Steps",             pdf:"manuals/10-steps-of-your-recruiting-process.pdf"},
+      {name:"Application Process & Resumes",        pdf:"manuals/11a-application-process-resumes.pdf"},
+      {name:"Sample Resumes",                       pdf:"manuals/11b-sample-resumes.pdf"},
+      {name:"Candidate Instructions & Assessment",  pdf:"manuals/12-candidate-instructions-assessment.pdf"}
+  ]},
+  { name:"Interviews", files:[
+      {name:"10min Screen",                         pdf:"manuals/13-ten-minute-phone-video-interview.pdf"},
+      {name:"Interview Structure",                  pdf:"manuals/14-conducting-structured-interviews.pdf"},
+      {name:"Final Interview",                      pdf:"manuals/15-the-final-interview.pdf"},
+      {name:"Job Offer, References, Background Check", pdf:"manuals/16-reference-background-offer.pdf"},
+      {name:"Interview Script",                     pdf:"reference/interview-script.pdf"},
+      {name:"Interview Scorecard",                  pdf:"reference/interview-scorecard.pdf"}
+  ]},
+  { name:"Retention", files:[
+      {name:"Onboarding",                           pdf:"manuals/17-onboarding.pdf"},
+      {name:"Career Development",                   pdf:"manuals/18-career-development-roadmap.pdf"},
+      {name:"Retention",                            pdf:"manuals/19-improving-retention.pdf"}
+  ]},
+  { name:"Reference", files:[
+      {name:"The Modern Science of Salesperson Selection", pdf:"reference/modern-science-of-salesperson-selection.pdf"},
+      {name:"The Science of Predicting Turnover",   pdf:"reference/sales-longevity-predicting-turnover.pdf"}
+  ]},
+  { name:"Toolkit", files:[
+      {name:"Troubleshooting Hiring & Onboarding",  pdf:"manuals/20-troubleshooting.pdf"},
+      {name:"Applicant Tracking and Templates",     pdf:"manuals/21-applicant-tracking-templates.pdf"},
+      {name:"Hiring A Sales Manager",               pdf:"manuals/22-hiring-a-sales-manager.pdf"}
+  ]}
+];
+
+/* ==========================================================================
+   SHARED HELPERS
+   ========================================================================== */
+const root = document.documentElement;
+const view = document.getElementById("view");
+const $    = id => document.getElementById(id);
+const esc  = s => String(s == null ? "" : s)
+  .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+function loadJSON(k){ try{ return JSON.parse(localStorage.getItem(k)) || {}; }catch(e){ return {}; } }
+function saveJSON(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+
+const HUB = "Sales Hiring Hub";
+const COURSE_GRAD   = "linear-gradient(135deg,#E34554 0%,#F05A28 52%,#FAB040 100%)";
+const COURSE_GLOW   = "0 22px 50px -24px rgba(235,80,60,.85)";
+const GUIDE_URL     = "https://lushin-inc.github.io/interview-guide/";
+const GUIDE_GRAD    = "linear-gradient(135deg,#21245C 0%,#1d4fb0 55%,#00ADED 100%)";
+const GUIDE_GLOW    = "0 22px 50px -24px rgba(0,150,230,.8)";
+const TRAINING_GRAD = "linear-gradient(135deg,#0045C2 0%,#00ADED 100%)";
+const TRAINING_GLOW = "0 22px 50px -24px rgba(0,120,220,.9)";
+
+const ICON = {
+  course:'<svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5-9 4.5z"/><path d="M7 9.8V15c0 1.6 2.2 3 5 3s5-1.4 5-3V9.8"/><path d="M21 7.5V13"/></svg>',
+  training:'<svg viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="13" rx="2.5"/><path d="M10 8.5v5l4.5-2.5z"/><path d="M8 21h8"/></svg>',
+  guide:'<svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V3h6v1"/><path d="M8.5 10.5l1.5 1.5 3-3"/><path d="M8.5 16h7"/></svg>',
+  download:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>'
+};
+
+/* ==========================================================================
+   HOME
+   ========================================================================== */
+function viewHome(){
+  view.innerHTML = `
+    <section class="home">
+      <h1 class="hub-title">${HUB}</h1>
+      <div class="choosers">
+        <a class="chooser" href="#training" style="background:${TRAINING_GRAD};box-shadow:${TRAINING_GLOW}">
+          <span class="ic">${ICON.training}</span>
+          <span>
+            <span class="nm">Watch These</span>
+            <span class="sub">(For real watch these)</span>
+            <span class="bar"><i style="width:${workbookPct()}%"></i></span>
+          </span>
+        </a>
+        <a class="chooser" href="#course" style="background:${COURSE_GRAD};box-shadow:${COURSE_GLOW}">
+          <span class="ic">${ICON.course}</span>
+          <span class="nm">Hiring Toolkit</span>
+        </a>
+        <a class="chooser" href="${GUIDE_URL}" target="_blank" rel="noopener" style="background:${GUIDE_GRAD};box-shadow:${GUIDE_GLOW}">
+          <span class="ic">${ICON.guide}</span>
+          <span class="nm">Hiring Guide</span>
+        </a>
+      </div>
+    </section>`;
+  document.title = HUB;
+}
+
+/* ==========================================================================
+   MINI-COURSE — PDF cards + download all
+   ========================================================================== */
+const abs = u => /^(https?:|#|mailto:|data:)/.test(u) ? u : COURSE_BASE + u;
+const ICON_TONES = ["#3C78D8", "#F0A93B", "#4CAF7D", "#E0474C", "#1E3A8A"];
+const MARK = "Assets/Lushin Logo Icons/Lushin Logo Icon - Arctic White.svg";
+const DL = '<svg class="pd" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><polyline points="7 10 12 15 17 10"/><path d="M5 20h14"/></svg>';
+const PROMPT = "Help me write the job ad in the best possible way.";
+const safeName = s => String(s).replace(/[\/\\:*?"<>|]/g, "-").trim();
+
+function viewCourse(){
+  view.innerHTML = `
+    <div class="sbanner" style="background:${COURSE_GRAD};box-shadow:${COURSE_GLOW}">
+      <h1>Hiring Toolkit</h1>
+    </div>
+    <ol class="howto">
+      <li><span class="hn">1</span><span>Download the manual for the step you're on.</span></li>
+      <li><span class="hn">2</span><span>Upload it to Claude with anything you know about the job and the company.</span></li>
+      <li><span class="hn">3</span><span>Ask: <q>${PROMPT}</q></span>
+        <button class="copy" type="button" data-copy="${esc(PROMPT)}">Copy</button></li>
+    </ol>
+    <div class="pdfgrid">
+      ${MANUALS.map(g => `
+        <section class="pdfcard">
+          <h2>${esc(g.name)}</h2>
+          <ul>${g.files.map((f,i) => `
+            <li><a class="pdfrow" href="${abs(f.pdf)}" target="_blank" rel="noopener" data-name="${esc(f.name)}">
+              <span class="pi" style="background:${ICON_TONES[i % ICON_TONES.length]}"><img src="${MARK}" alt=""></span>
+              <span class="pn">${esc(f.name)}</span>${DL}
+            </a></li>`).join("")}
+          </ul>
+        </section>`).join("")}
+    </div>
+    <div class="allbox center">
+      <button class="act course" id="zipbtn" type="button">${ICON.download}Download all PDFs</button>
+      <p class="hint" id="ziphint"></p>
+    </div>`;
+
+  const cp = view.querySelector("[data-copy]");
+  cp.onclick = () => {
+    const done = () => { cp.textContent = "Copied"; setTimeout(() => { cp.textContent = "Copy"; }, 1400); };
+    const text = cp.dataset.copy;
+    if(navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, done);
+    else { const t = document.createElement("textarea"); t.value = text; document.body.appendChild(t); t.select();
+      try{ document.execCommand("copy"); }catch(e){} document.body.removeChild(t); done(); }
+  };
+
+  /* single PDF: save it under the name shown on the page */
+  view.querySelectorAll(".pdfrow").forEach(a => {
+    a.addEventListener("click", async e => {
+      e.preventDefault();
+      if(a.classList.contains("busy")) return;
+      a.classList.add("busy");
+      try{
+        const r = await fetch(a.href);
+        if(!r.ok) throw new Error(r.status);
+        saveBlob(await r.blob(), safeName(a.dataset.name) + ".pdf");
+      }catch(err){
+        window.open(a.href, "_blank", "noopener");
+      }
+      a.classList.remove("busy");
+    });
+  });
+
+  $("zipbtn").onclick = downloadAll;
+  document.title = "Hiring Toolkit — " + HUB;
+}
+
+function saveBlob(blob, filename){
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+
+let zipLib = null;
+function loadZip(){
+  if(zipLib) return zipLib;
+  zipLib = new Promise((res, rej) => {
+    const sc = document.createElement("script");
+    sc.src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
+    sc.onload = () => res(window.JSZip);
+    sc.onerror = () => { zipLib = null; rej(new Error("offline")); };
+    document.head.appendChild(sc);
+  });
+  return zipLib;
+}
+
+/* every PDF in one zip: Hiring Toolkit / 1 - Intro / Introduction.pdf */
+async function downloadAll(){
+  const btn = $("zipbtn"), hint = $("ziphint");
+  const list = [];
+  MANUALS.forEach((g, gi) => g.files.forEach(f =>
+    list.push({ folder:(gi + 1) + " - " + safeName(g.name), file:safeName(f.name) + ".pdf", url:abs(f.pdf) })));
+  btn.disabled = true;
+  try{
+    const JSZip = await loadZip();
+    const zip = new JSZip();
+    const top = zip.folder("Hiring Toolkit");
+    let n = 0;
+    await Promise.all(list.map(async item => {
+      const r = await fetch(item.url);
+      if(!r.ok) throw new Error(item.file);
+      top.folder(item.folder).file(item.file, await r.blob());
+      hint.textContent = "Gathering PDFs… " + (++n) + " of " + list.length;
+    }));
+    hint.textContent = "Zipping…";
+    saveBlob(await zip.generateAsync({type:"blob"}), "Hiring Toolkit.zip");
+    hint.textContent = "";
+  }catch(err){
+    hint.textContent = "The download couldn't finish. Check your connection and try again.";
+  }
+  btn.disabled = false;
+}
+
+/* ==========================================================================
+   TRAINING SESSIONS — workbook
+   ========================================================================== */
+const WB = "hiringhub.workbook.v1";
+let ANSWERS = loadJSON(WB);
+let wbTimer = null;
+function saveAnswers(){ clearTimeout(wbTimer); wbTimer = setTimeout(() => saveJSON(WB, ANSWERS), 250); }
+const val = k => ANSWERS[k] || "";
+
+const tone      = s => TONES[s.tone] || TONES.gold;
+const findSess  = k => SESSIONS.find(s => s.key === k);
+const pagesOf   = s => PAGES.filter(p => p.s === s.key);
+const pageNo    = p => PAGES.indexOf(p) + 1;
+const sessNo    = s => SESSIONS.indexOf(s) + 1;
+
+/* every answerable key on a page, in order */
+function keysOf(page){
+  const out = [];
+  page.blocks.forEach(b => {
+    const base = page.id + "." + b.k;
+    if(["num","flow","stairs","hub"].includes(b.t)) for(let i=1;i<=b.n;i++) out.push(base + "." + i);
+    else if(b.t === "lines") b.items.forEach((_,i) => out.push(base + "." + (i+1)));
+    else if(["prompt","callout","inline"].includes(b.t)) out.push(base);
+    else if(b.t === "split") b.cols.forEach((_,i) => out.push(base + "." + (i+1)));
+    else if(b.t === "trio") for(let r=1;r<=b.n;r++) for(let c=1;c<=3;c++) out.push(base + "." + r + "." + c);
+  });
+  return out;
+}
+function progress(s){
+  const ks = pagesOf(s).flatMap(keysOf);
+  const done = ks.filter(k => (ANSWERS[k] || "").trim()).length;
+  return { done, total: ks.length, complete: done === ks.length };
+}
+function workbookPct(){
+  const ks = PAGES.flatMap(keysOf);
+  return ks.length ? Math.round(ks.filter(k => (ANSWERS[k] || "").trim()).length / ks.length * 100) : 0;
+}
+
+/* ---------- hub diagram (SVG) ---------- */
+function svgHub(b, base, answers){
+  const cx = 500, cy = 280, n = b.n;
+  let g = "";
+  for(let i=0;i<n;i++){
+    const a = (-90 + i * 360 / n) * Math.PI / 180;
+    const cos = Math.cos(a), sin = Math.sin(a);
+    const x1 = cx + cos * 104, y1 = cy + sin * 104;
+    const mx = cx + cos * 178, my = cy + sin * 178;
+    g += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${(cx + cos*150).toFixed(1)}" y2="${(cy + sin*150).toFixed(1)}" stroke="#21245C" stroke-width="4" stroke-linecap="round"/>`;
+    g += `<circle cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" r="26" fill="#00ADED"/>`;
+    g += `<text x="${mx.toFixed(1)}" y="${(my + 8).toFixed(1)}" text-anchor="middle" font-family="Poppins, Arial" font-size="22" font-weight="600" fill="#ffffff">${i+1}</text>`;
+    let lx, ly, anchor;
+    if(Math.abs(cos) < 0.2){ lx = mx; ly = my + (sin < 0 ? -44 : 64); anchor = "middle"; }
+    else if(sin > 0.5){ lx = mx; ly = my + 64; anchor = "middle"; }
+    else { lx = mx + (cos > 0 ? 42 : -42); ly = my + 9; anchor = cos > 0 ? "start" : "end"; }
+    const raw = (answers ? answers[i] : val(base + "." + (i+1))).trim();
+    const txt = raw.length > 22 ? raw.slice(0, 21) + "…" : raw;
+    if(txt){
+      g += `<text data-hubtext="${i+1}" x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anchor}" font-family="Poppins, Arial" font-size="24" font-weight="600" fill="#21245C">${esc(txt)}</text>`;
+    } else {
+      const w = 150, x0 = anchor === "middle" ? lx - w/2 : anchor === "start" ? lx : lx - w;
+      g += `<line x1="${x0.toFixed(1)}" y1="${(ly + 4).toFixed(1)}" x2="${(x0 + w).toFixed(1)}" y2="${(ly + 4).toFixed(1)}" stroke="#c9d4e4" stroke-width="3" stroke-linecap="round"/>`;
+    }
+  }
+  return `<svg viewBox="0 40 1000 500" role="img" aria-label="${esc(b.center)} diagram">
+    ${g}
+    <circle cx="${cx}" cy="${cy}" r="100" fill="#21245C"/>
+    <text x="${cx}" y="${cy + 9}" text-anchor="middle" font-family="Poppins, Arial" font-size="27" font-weight="600" fill="#ffffff">${esc(b.center)}</text>
+  </svg>`;
+}
+
+/* ---------- screen rendering ---------- */
+function field(k, ph){
+  return `<input class="f" type="text" data-fk="${k}" value="${esc(val(k))}" placeholder="${esc(ph || "")}" autocomplete="off" spellcheck="true">`;
+}
+function area(k, rows, ph){
+  const r = rows || 3;
+  return `<textarea class="f" rows="${r}" style="min-height:${r * 26 + 28}px" data-fk="${k}" placeholder="${esc(ph || "")}">${esc(val(k))}</textarea>`;
+}
+
+function blockHTML(page, b){
+  const base = page.id + "." + b.k;
+  const h3 = b.label ? `<h3>${esc(b.label)}</h3>` : "";
+  switch(b.t){
+    case "num": {
+      let li = "";
+      for(let i=1;i<=b.n;i++) li += `<div class="line"><span>${i}.)</span>${field(base + "." + i)}</div>`;
+      return `<div class="blk">${h3}<div class="lines">${li}</div></div>`;
+    }
+    case "lines":
+      return `<div class="blk">${h3}<div class="lines">${b.items.map((it,i) =>
+        `<div class="line lab"><span>${esc(it)}</span>${field(base + "." + (i+1))}</div>`).join("")}</div></div>`;
+    case "prompt":
+      return `<div class="blk">${h3}${area(base, b.rows)}</div>`;
+    case "inline":
+      return `<div class="blk inline-q"><h3>${esc(b.label)}</h3>${field(base)}</div>`;
+    case "callout":
+      return `<div class="blk"><div class="callout"><h4>${esc(b.label)}</h4><div class="inner">${area(base, 3)}</div></div></div>`;
+    case "flow": {
+      let st = "";
+      for(let i=1;i<=b.n;i++) st += `<div class="fstep"><span class="fn">${i}</span>${area(base + "." + i, 2)}</div>`;
+      return `<div class="blk">${h3}<div class="flow">${st}</div></div>`;
+    }
+    case "split":
+      return `<div class="blk"><div class="split2">${b.cols.map((c,i) =>
+        `<div><h4>${esc(c)}</h4>${area(base + "." + (i+1), 4)}</div>`).join("")}</div></div>`;
+    case "trio": {
+      let rows = `<div class="trow head"><span></span>${b.cols.map(c => `<span>${esc(c)}</span>`).join("")}</div>`;
+      for(let r=1;r<=b.n;r++){
+        rows += `<div class="trow"><span class="tn">${r}.)</span>` +
+          b.cols.map((c,ci) => area(base + "." + r + "." + (ci+1), 2, c)).join("") + `</div>`;
+      }
+      return `<div class="blk">${h3}<div class="trio">${rows}</div></div>`;
+    }
+    case "stairs": {
+      let st = "";
+      for(let i=1;i<=b.n;i++){
+        const shade = `linear-gradient(160deg,#21245C 0%,${["#1d3f97","#0a5fc4","#0087d6","#00ADED"][Math.min(i-1,3)]} 100%)`;
+        st += `<div class="stair" style="--lv:${i};background:${shade}">${area(base + "." + i, 2)}<span class="sn">${i}</span></div>`;
+      }
+      return `<div class="blk">${h3}<div class="stairs">${st}</div></div>`;
+    }
+    case "hub": {
+      let li = "";
+      for(let i=1;i<=b.n;i++) li += `<div class="line"><span>${i}.)</span>${field(base + "." + i)}</div>`;
+      return `<div class="blk">${h3}<div class="hubfig" data-hub="${base}">${svgHub(b, base)}</div><div class="lines">${li}</div></div>`;
+    }
+  }
+  return "";
+}
+
+function sheetHTML(page){
+  return `<article class="sheet" id="sheet-${page.id}">
+    <p class="tag">Pg. ${pageNo(page)} &mdash; ${esc(page.topic)}</p>
+    <p class="quote">${esc(page.quote)}</p>
+    <div class="blocks">${page.blocks.map(b => blockHTML(page, b)).join("")}</div>
+  </article>`;
+}
+
+/* ---------- print sheets ---------- */
+const pText = v => `<div class="ptext">${esc(v)}</div>`;
+function printBlock(page, b, t){
+  const base = page.id + "." + b.k;
+  const h3 = b.label ? `<h3>${esc(b.label)}</h3>` : "";
+  const nums = n => { let s = ""; for(let i=1;i<=n;i++) s += `<div class="pline"><b>${i}.)</b><u>${esc(val(base + "." + i))}</u></div>`; return s; };
+  switch(b.t){
+    case "num": case "flow": case "stairs": return h3 + nums(b.n);
+    case "lines": return h3 + b.items.map((it,i) => `<div class="pline"><b class="wide">${esc(it)}</b><u>${esc(val(base + "." + (i+1)))}</u></div>`).join("");
+    case "prompt": return h3 + pText(val(base));
+    case "inline": return `<div class="pline" style="margin-top:26px"><b class="wide" style="font-size:16px">${esc(b.label)}</b><u>${esc(val(base))}</u></div>`;
+    case "callout": return `<div class="pcall" style="background:${t.c}"><h4 style="color:${t.on}">${esc(b.label)}</h4><div class="pin">${esc(val(base))}</div></div>`;
+    case "split": return `<div class="pgrid" style="margin-top:26px">${b.cols.map((c,i) => `<div><h5>${esc(c)}</h5>${pText(val(base + "." + (i+1)))}</div>`).join("")}</div>`;
+    case "trio": {
+      let s = h3 + `<div class="pgrid" style="margin-bottom:6px">${b.cols.map(c => `<div><h5>${esc(c)}</h5></div>`).join("")}</div>`;
+      for(let r=1;r<=b.n;r++) s += `<div class="pgrid" style="margin-bottom:10px">${b.cols.map((c,ci) => `<div>${pText(val(base + "." + r + "." + (ci+1)))}</div>`).join("")}</div>`;
+      return s;
+    }
+    case "hub": {
+      const ans = []; for(let i=1;i<=b.n;i++) ans.push(val(base + "." + i));
+      return h3 + `<div class="pfig" style="max-width:600px;margin:0 auto 10px">${svgHub(b, base, ans)}</div>` + nums(b.n);
+    }
+  }
+  return "";
+}
+function printSheet(page){
+  const s = findSess(page.s), t = tone(s);
+  const d = document.createElement("div");
+  d.className = "psheet";
+  d.innerHTML =
+    `<div class="pmark"><img src="Assets/Lushin Logo Icons/Lushin Logo Blue.svg" alt=""><span>LUSHIN</span></div>` +
+    `<p class="pq">${esc(page.quote)}</p>` +
+    page.blocks.map(b => printBlock(page, b, t)).join("") +
+    `<p class="pfoot">Pg. ${pageNo(page)} &mdash; ${esc(page.topic)} &nbsp;&middot;&nbsp; ${esc(s.title)}</p>`;
+  return d;
+}
+
+/* ---------- PDF ---------- */
+let libs = null;
+function loadLibs(){
+  if(libs) return libs;
+  libs = new Promise((res, rej) => {
+    const urls = [
+      "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+    ];
+    let i = 0;
+    (function nextScript(){
+      if(i === urls.length) return res(true);
+      const sc = document.createElement("script");
+      sc.src = urls[i++]; sc.onload = nextScript;
+      sc.onerror = () => { libs = null; rej(new Error("offline")); };
+      document.head.appendChild(sc);
+    })();
+  });
+  return libs;
+}
+/* html2canvas often leaves blank rows at the bottom — trim them */
+function trimBottom(canvas){
+  try{
+    const ctx = canvas.getContext("2d");
+    const d = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    let last = -1;
+    for(let y = canvas.height - 1; y >= 0 && last < 0; y--){
+      const row = y * canvas.width * 4;
+      for(let x = 0; x < canvas.width; x++){
+        const p = row + x * 4;
+        if(d[p] < 248 || d[p+1] < 248 || d[p+2] < 248){ last = y; break; }
+      }
+    }
+    const keep = Math.min(canvas.height, (last < 0 ? 0 : last) + 40);
+    if(keep > 0 && keep < canvas.height){
+      const c = document.createElement("canvas");
+      c.width = canvas.width; c.height = keep;
+      const cx = c.getContext("2d");
+      cx.fillStyle = "#fff"; cx.fillRect(0, 0, c.width, c.height);
+      cx.drawImage(canvas, 0, 0);
+      canvas.height = keep;
+      ctx.drawImage(c, 0, 0);
+    }
+  }catch(e){}
+}
+async function makePDF(pages, filename, btn, hint){
+  btn.disabled = true;
+  hint.textContent = "Building your PDF…";
+  try{
+    await loadLibs();
+    const rootEl = $("printroot");
+    rootEl.innerHTML = "";
+    const nodes = pages.map(p => { const n = printSheet(p); rootEl.appendChild(n); return n; });
+    if(document.fonts && document.fonts.ready){ try{ await document.fonts.ready; }catch(e){} }
+    await new Promise(r => setTimeout(r, 150));
+    const doc = new window.jspdf.jsPDF({ unit:"pt", format:"letter", compress:true });
+    const M = 30, PW = 612, PH = 792, W = PW - M*2, H = PH - M*2;
+    for(let i=0;i<nodes.length;i++){
+      hint.textContent = "Building your PDF… page " + (i+1) + " of " + nodes.length;
+      const canvas = await window.html2canvas(nodes[i], { scale:2, backgroundColor:"#ffffff", logging:false, useCORS:true, imageTimeout:0 });
+      trimBottom(canvas);
+      const ratio = canvas.width / W, fullH = canvas.height / ratio;
+      if(fullH <= H){
+        if(i) doc.addPage();
+        doc.addImage(canvas.toDataURL("image/jpeg", .92), "JPEG", M, M, W, fullH);
+      } else if(fullH <= H * 1.3){
+        const h = H, w = W * (H / fullH);
+        if(i) doc.addPage();
+        doc.addImage(canvas.toDataURL("image/jpeg", .92), "JPEG", M + (W - w)/2, M, w, h);
+      } else {
+        const sliceH = Math.floor(H * ratio);
+        let y = 0, first = true;
+        while(y < canvas.height){
+          const h = Math.min(sliceH, canvas.height - y);
+          const c = document.createElement("canvas");
+          c.width = canvas.width; c.height = h;
+          const cx = c.getContext("2d");
+          cx.fillStyle = "#fff"; cx.fillRect(0, 0, c.width, c.height);
+          cx.drawImage(canvas, 0, y, canvas.width, h, 0, 0, canvas.width, h);
+          if(i || !first) doc.addPage();
+          doc.addImage(c.toDataURL("image/jpeg", .92), "JPEG", M, M, W, h / ratio);
+          first = false; y += h;
+        }
+      }
+    }
+    doc.save(filename);
+    rootEl.innerHTML = "";
+    hint.textContent = "";
+  }catch(e){
+    hint.textContent = "The PDF builder couldn't load. Check your connection and try again.";
+  }
+  btn.disabled = false;
+}
+
+function leftText(){
+  const left = SESSIONS.filter(s => !progress(s).complete).map(sessNo);
+  if(!left.length) return "";
+  return left.length === 1 ? "Finish session " + left[0] + " to unlock this."
+    : "Finish sessions " + left.slice(0,-1).join(", ") + " and " + left[left.length-1] + " to unlock this.";
+}
+
+/* ---------- views ---------- */
+let CURRENT_SESSION = null;
+
+function viewTraining(){
+  CURRENT_SESSION = null;
+  view.innerHTML = `
+    <div>
+      <div class="sbanner" style="background:${TRAINING_GRAD};box-shadow:${TRAINING_GLOW}">
+        <h1>Watch These</h1>
+        <p class="subline">(For real watch these)</p>
+      </div>
+      <div class="stack">
+        ${SESSIONS.map(s => {
+          const p = progress(s);
+          return `<a class="cover" href="#training/${s.key}" style="--tone:${tone(s).c}">
+            <img src="${s.cover}" alt="Session ${sessNo(s)} — ${esc(s.title)}">
+            <span class="bar"><i style="width:${p.total ? Math.round(p.done / p.total * 100) : 0}%"></i></span>
+          </a>`;
+        }).join("")}
+      </div>
+      <div class="allbox center">
+        <button class="act" id="allbtn" type="button" ${leftText() ? "disabled" : ""}>${ICON.download}Download the full workbook</button>
+        <p class="hint" id="allhint">${leftText()}</p>
+      </div>
+    </div>`;
+  $("allbtn").onclick = () => makePDF(PAGES, "Sales Hiring Workbook.pdf", $("allbtn"), $("allhint"));
+  document.title = "Watch These — " + HUB;
+}
+
+function viewSession(s){
+  CURRENT_SESSION = s;
+  const t = tone(s), i = SESSIONS.indexOf(s);
+  const prev = SESSIONS[i-1], next = SESSIONS[i+1];
+  const last = i === SESSIONS.length - 1;
+  view.innerHTML = `
+    <div class="narrow" style="--tone:${t.c};--tone-deep:${t.deep};--tone-on:${t.on}">
+      <a class="backlink" href="#training"><span class="arrow">&larr;</span>Watch These</a>
+      <div class="shead">
+        <p class="eyebrow">Session ${sessNo(s)}</p>
+        <h1>${esc(s.title)}</h1>
+      </div>
+      <div class="stage">${player(s)}</div>
+      <div class="sheets">${pagesOf(s).map(sheetHTML).join("")}</div>
+      <div class="allbox">
+        <button class="act" id="sessbtn" type="button">${ICON.download}<span>Download session ${sessNo(s)} pages</span></button>
+        <p class="hint" id="sesshint"></p>
+      </div>
+      ${last ? `<div class="allbox" style="margin-top:14px">
+        <button class="act ghost" id="finalbtn" type="button">${ICON.download}Download the full workbook</button>
+        <p class="hint" id="finalhint"></p>
+      </div>` : ""}
+      <div class="pager">
+        ${prev ? `<a href="#training/${prev.key}"><span class="arrow">&larr;</span>Previous</a>` : ""}
+        <span class="spacer"></span>
+        ${next ? `<a href="#training/${next.key}">Next<span class="arrow">&rarr;</span></a>` : ""}
+      </div>
+    </div>`;
+  view.querySelectorAll("textarea.f").forEach(grow);
+  $("sessbtn").onclick = () => makePDF(pagesOf(s), "Sales Hiring Workbook - Session " + sessNo(s) + ".pdf", $("sessbtn"), $("sesshint"));
+  if(last) $("finalbtn").onclick = () => makePDF(PAGES, "Sales Hiring Workbook.pdf", $("finalbtn"), $("finalhint"));
+  refreshSession();
+  document.title = s.title + " — " + HUB;
+}
+
+/* YouTube refuses to play embeds that arrive without a referring website
+   (Error 153). On the published page that is never an issue. Opened as a
+   local file there is no website to refer from, so the cover links out. */
+function player(s){
+  if(/^https?:$/.test(location.protocol)){
+    return `<iframe src="https://www.youtube.com/embed/${s.video}?rel=0&playsinline=1" title="${esc(s.title)}"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>`;
+  }
+  return `<a class="facade" href="https://www.youtube.com/watch?v=${s.video}" target="_blank" rel="noopener">
+    <img src="${s.cover}" alt=""><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span></a>`;
+}
+
+function refreshSession(){
+  const s = CURRENT_SESSION;
+  if(!s || !$("sesshint")) return;
+  const p = progress(s);
+  if(!$("sessbtn").disabled || !/Building/.test($("sesshint").textContent))
+    $("sesshint").textContent = p.complete ? "" : (p.total - p.done) + " of " + p.total + " left to fill in.";
+  if($("finalbtn")){
+    const lt = leftText();
+    $("finalbtn").disabled = !!lt;
+    $("finalhint").textContent = lt;
+  }
+}
+
+function grow(el){ el.style.height = "auto"; el.style.height = (el.scrollHeight + 2) + "px"; }
+
+/* ==========================================================================
+   EVENTS — one delegated listener per kind
+   ========================================================================== */
+document.addEventListener("input", e => {
+  const el = e.target;
+  if(!el.dataset || !el.dataset.fk) return;
+  ANSWERS[el.dataset.fk] = el.value;
+  saveAnswers();
+  if(el.tagName === "TEXTAREA") grow(el);
+  const hub = el.closest(".blk") && el.closest(".blk").querySelector("[data-hub]");
+  if(hub){
+    const page = PAGES.find(p => hub.dataset.hub.indexOf(p.id + ".") === 0);
+    const b = page && page.blocks.find(x => page.id + "." + x.k === hub.dataset.hub);
+    if(b) hub.innerHTML = svgHub(b, hub.dataset.hub);
+  }
+  refreshSession();
+});
+
+/* ==========================================================================
+   ROUTER — #training, #training/<session>, #course
+   ========================================================================== */
+function route(){
+  const parts = decodeURIComponent(location.hash.replace(/^#/, "")).split("/");
+  let section = "home";
+  CURRENT_SESSION = null;
+
+  if(parts[0] === "course"){
+    section = "course";
+    root.setAttribute("data-view", "course");
+    viewCourse();
+  } else if(parts[0] === "training"){
+    section = "training";
+    const s = findSess(parts[1]);
+    if(s){ root.setAttribute("data-view", "session"); viewSession(s); }
+    else { root.setAttribute("data-view", "training"); viewTraining(); }
+  } else {
+    root.setAttribute("data-view", "home");
+    viewHome();
+  }
+
+  document.querySelectorAll("#topnav a").forEach(a => a.classList.toggle("on", a.dataset.nav === section));
+  view.style.animation = "none"; void view.offsetWidth; view.style.animation = "";
+  window.scrollTo(0, 0);
+}
+
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
