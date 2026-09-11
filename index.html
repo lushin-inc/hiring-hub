@@ -171,7 +171,7 @@ html[data-theme="dark"] .brand .dk{display:block;}
 }
 .pdfcard h2{
   margin:0 0 16px;padding:0 0 18px;border-bottom:1px solid #e6e9ef;
-  font-size:22px;font-weight:600;letter-spacing:-.015em;line-height:1.2;color:#14171d;
+  font-size:22px;font-weight:600;letter-spacing:-.015em;line-height:1.2;color:#0045C2;
 }
 .pdfcard ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;}
 .pdfrow{
@@ -179,11 +179,8 @@ html[data-theme="dark"] .brand .dk{display:block;}
   color:#3c4452;font-size:16.5px;line-height:1.35;transition:background .14s ease,color .14s ease;
 }
 .pdfrow:hover{background:#f2f5fa;color:#21245C;}
-.pdfrow .pi{
-  flex:0 0 32px;width:32px;height:32px;border-radius:8px;
-  display:inline-flex;align-items:center;justify-content:center;
-}
-.pdfrow .pi img{width:22px;height:22px;display:block;}
+.pdfrow .pi{flex:0 0 21px;width:21px;height:21px;color:#c3c9d4;transition:color .14s ease;}
+.pdfrow:hover .pi{color:#8b93a2;}
 .pdfrow .pn{flex:1;min-width:0;}
 .pdfrow .pd{flex:0 0 18px;width:18px;height:18px;color:#8b93a2;opacity:0;transition:opacity .14s ease;}
 .pdfrow:hover .pd{opacity:1;}
@@ -209,9 +206,12 @@ html[data-theme="dark"] .brand .dk{display:block;}
 .howto li > span:nth-child(2){flex:1 1 260px;min-width:0;}
 .howto .hn{
   flex:0 0 28px;width:28px;height:28px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,#E34554 0%,#F05A28 52%,#FAB040 100%);font-size:13px;font-weight:600;
+  background:linear-gradient(135deg,#E34554 0%,#F05A28 52%,#FAB040 100%);font-size:13px;font-weight:400;color:#000;
 }
 .howto q{font-weight:600;color:var(--text);}
+.blockhead{
+  margin:0 0 12px;font-size:22px;font-weight:600;letter-spacing:-.015em;line-height:1.2;color:#0045C2;
+}
 .howto q::before{content:"\201C";} .howto q::after{content:"\201D";}
 .howto .copy{
   margin-left:auto;border:1px solid var(--glass-line);background:transparent;color:var(--text);border-radius:999px;
@@ -237,6 +237,7 @@ html[data-theme="dark"] .brand .dk{display:block;}
 
 .allbox{margin:clamp(26px,4vw,40px) 0 0;}
 .allbox.center{max-width:620px;margin-left:auto;margin-right:auto;}
+.allbox.top{margin-top:0;margin-bottom:22px;}
 .act{
   display:flex;align-items:center;justify-content:center;gap:12px;width:100%;
   padding:22px 28px;border:0;border-radius:999px;
@@ -724,8 +725,7 @@ function viewHome(){
    MINI-COURSE — PDF cards + download all
    ========================================================================== */
 const abs = u => /^(https?:|#|mailto:|data:)/.test(u) ? u : COURSE_BASE + u;
-const ICON_TONES = ["#3C78D8", "#F0A93B", "#4CAF7D", "#E0474C", "#1E3A8A"];
-const MARK = "Assets/Lushin Logo Icons/Lushin Logo Icon - Arctic White.svg";
+const DOC = '<svg class="pi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3H7.5A2 2 0 0 0 5.5 5v14a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V7.5z"/><path d="M14.5 3v4.5h4"/></svg>';
 const DL = '<svg class="pd" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><polyline points="7 10 12 15 17 10"/><path d="M5 20h14"/></svg>';
 const PROMPT = "Help me write the job ad in the best possible way.";
 const safeName = s => String(s).replace(/[\/\\:*?"<>|]/g, "-").trim();
@@ -735,37 +735,27 @@ function viewCourse(){
     <div class="sbanner" style="background:${COURSE_GRAD};box-shadow:${COURSE_GLOW}">
       <h1>Hiring Toolkit</h1>
     </div>
+    <div class="allbox center top">
+      <button class="act course" id="zipbtn" type="button">${ICON.download}Download all PDFs</button>
+      <p class="hint" id="ziphint"></p>
+    </div>
+    <h2 class="blockhead">Writing the Ad + Claude</h2>
     <ol class="howto">
       <li><span class="hn">1</span><span>Download the manual for the step you're on.</span></li>
       <li><span class="hn">2</span><span>Upload it to Claude with anything you know about the job and the company.</span></li>
-      <li><span class="hn">3</span><span>Ask: <q>${PROMPT}</q></span>
-        <button class="copy" type="button" data-copy="${esc(PROMPT)}">Copy</button></li>
+      <li><span class="hn">3</span><span>Ask: <q>${PROMPT}</q></span></li>
     </ol>
     <div class="pdfgrid">
       ${MANUALS.map(g => `
         <section class="pdfcard">
           <h2>${esc(g.name)}</h2>
-          <ul>${g.files.map((f,i) => `
+          <ul>${g.files.map(f => `
             <li><a class="pdfrow" href="${abs(f.pdf)}" target="_blank" rel="noopener" data-name="${esc(f.name)}">
-              <span class="pi" style="background:${ICON_TONES[i % ICON_TONES.length]}"><img src="${MARK}" alt=""></span>
-              <span class="pn">${esc(f.name)}</span>${DL}
+              ${DOC}<span class="pn">${esc(f.name)}</span>${DL}
             </a></li>`).join("")}
           </ul>
         </section>`).join("")}
-    </div>
-    <div class="allbox center">
-      <button class="act course" id="zipbtn" type="button">${ICON.download}Download all PDFs</button>
-      <p class="hint" id="ziphint"></p>
     </div>`;
-
-  const cp = view.querySelector("[data-copy]");
-  cp.onclick = () => {
-    const done = () => { cp.textContent = "Copied"; setTimeout(() => { cp.textContent = "Copy"; }, 1400); };
-    const text = cp.dataset.copy;
-    if(navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, done);
-    else { const t = document.createElement("textarea"); t.value = text; document.body.appendChild(t); t.select();
-      try{ document.execCommand("copy"); }catch(e){} document.body.removeChild(t); done(); }
-  };
 
   /* single PDF: save it under the name shown on the page */
   view.querySelectorAll(".pdfrow").forEach(a => {
